@@ -2,7 +2,9 @@
      Copyright ©2022 Someone, MIT license, see LICENSE file
 -->
 <template>
-  <div class="network-diagram" ref="netdiag"></div>
+  <div class="px-1 width100 flex-grow-1 flex-shrink-1" ref="netdiag">
+    <div class="width100"></div>
+  </div>
 </template>
 
 <script scoped>
@@ -51,9 +53,12 @@ Displays a computer network diagram... Send it some JSON and it does magic...`,
     },
   },
 
-  data() { return {
-    network: null,
-  } },
+  full_page: true, // allow widget to be expanded full-page
+
+  created() {
+    this.network = null // non-reactive, see https://github.com/almende/vis/issues/2524
+    this.ro = new ResizeObserver(() => this.onResize()) // resize-observer is non-reactive
+  },
 
   computed: {
     nodeDataSet() { return new DataSet(Object.values(this.nodes)) },
@@ -61,17 +66,44 @@ Displays a computer network diagram... Send it some JSON and it does magic...`,
     dataSet() { return { nodes: this.nodeDataSet, edges: this.edgeDataSet } },
   },
 
+  mounted() { this.update(this.dataSet, null) },
+
   watch: {
-    dataSet() { this.update() },
+    // when the dataSet changes cause a display update
+    dataSet(newDataSet, oldDataSet) { this.update(newDataSet, oldDataSet) },
   },
-  mounted() { this.update() },
+
+  beforeDestroy() {
+    if (this.ro) this.ro.disconnect()
+    this.ro = null
+    if (this.network) this.network.destroy()
+    this.network = null
+  },
+
   methods: {
-    update() {
-      console.log("Displaying network:", Object.keys(this.nodes), Object.keys(this.edges))
-      this.network = new Network(this.$refs.netdiag, this.dataSet, this.options)
-      this.$nextTick(() => this.network.redraw())
+    onResize() {
+      const el = this.$refs.netdiag
+      if (this.network) {
+        console.log("resize", el.clientWidth, el.clientHeight)
+        this.network.setSize(el.clientWidth, el.clientHeight)
+        this.network.fit()
+        //doesn't seem to make a difference: this.network.redraw()
+      }
+    },
+
+    observeSize() {
+      if (this.ro) this.ro.disconnect()
+      this.ro.observe(this.$refs.netdiag)
+    },
+
+    update(newDataSet, oldDataSet) {
+        console.log("Displaying network:", Object.keys(this.nodes), Object.keys(this.edges))
+        if (this.network) this.network.destroy()
+        this.network = new Network(this.$refs.netdiag, newDataSet, this.options)
+        this.$nextTick(() => this.observeSize())
     },
   },
+
 }
 </script>
 
