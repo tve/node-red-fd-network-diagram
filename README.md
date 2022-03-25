@@ -1,8 +1,8 @@
 Network Diagram FlexDash Widget for Node-RED
 ============================================
 
-How-To
-------
+How-To using Docker
+-------------------
 
 - create a working directory, I'm using /home/flexdash
 - git clone the flexdash sources: https://github.com/tve/flexdash
@@ -29,3 +29,13 @@ docker run --rm -ti -p 1990:1880 -p 3000:3000 \
 - open FlexDash at http://localhost:1990/flexdash-src, wait a minute for the dashboard to appear
 - you should have a widget with a 3-node diagram
 - in the flow editor, hit the set_network inject node, then hit the add_nodes inject node, observe the changes
+
+Non-docker (untested)
+---------------------
+
+- git clone network-diagram: https://github.com/tve/node-red-fd-network-diagram
+- install it in Node-RED (in the Node-RED dir run `npm install ../path/to/node-red-fd-network-diagram`)
+- start Node-RED
+- create a new flow and import the example flow from the network diagram pkg
+- you will need to wait a while the first time while the dev server downloads flexdash and gets it running
+- open FlexDash and proceed as above
