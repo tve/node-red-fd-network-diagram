@@ -1,0 +1,97 @@
+[
+    {
+        "id": "9ef2d01ac475faf5",
+        "type": "flexdash dev server",
+        "z": "f6f2187d.f17ca8",
+        "fd": "020b4b6c9679a53a",
+        "sourceDir": "./flexdash-src",
+        "enable": true,
+        "install": true,
+        "x": 650,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bbb02d1b1cb34421",
+        "type": "network-diagram",
+        "z": "f6f2187d.f17ca8",
+        "fd": "020b4b6c9679a53a",
+        "name": "",
+        "enabled": "true",
+        "color": "",
+        "output_value": "",
+        "icon": "true",
+        "title": "",
+        "x": 650,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d346dc503830f104",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "network 1",
+        "props": [
+            {
+                "p": "params",
+                "v": "{\"nodes\":[{\"id\":1,\"label\":\"Router\"},{\"id\":2,\"label\":\"Laptop\"},{\"id\":3,\"label\":\"NodeRED\"},{\"id\":4,\"label\":\"Cell\"}],\"edges\":[{\"from\":1,\"to\":3},{\"from\":1,\"to\":2},{\"from\":1,\"to\":4},{\"from\":2,\"to\":4}]}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 440,
+        "y": 480,
+        "wires": [
+            [
+                "bbb02d1b1cb34421"
+            ]
+        ]
+    },
+    {
+        "id": "77edd58c597cda71",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "network 2",
+        "props": [
+            {
+                "p": "params",
+                "v": "{\"nodes\":[{\"id\":1,\"label\":\"Router\"},{\"id\":2,\"label\":\"Laptop\"},{\"id\":3,\"label\":\"NodeRED\"},{\"id\":4,\"label\":\"Cell\"}],\"edges\":[{\"from\":1,\"to\":3},{\"from\":1,\"to\":2},{\"from\":1,\"to\":4},{\"from\":3,\"to\":4}]}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 440,
+        "y": 540,
+        "wires": [
+            [
+                "bbb02d1b1cb34421"
+            ]
+        ]
+    },
+    {
+        "id": "020b4b6c9679a53a",
+        "type": "flexdash config",
+        "port": "80",
+        "ioOpts": "{}",
+        "path": "/flexdash",
+        "redServer": true,
+        "saveConfig": true,
+        "allOrigins": true,
+        "ctxName": "",
+        "devServer": false,
+        "devInstall": false,
+        "name": "FlexDash"
+    }
+]

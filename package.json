@@ -1,0 +1,37 @@
+{
+  "name": "@tve/node-red-fd-network-diagram",
+  "version": "0.1.0",
+  "description": "Display a network diagram in Node-RED using the FlexDash dashboard.",
+  "dependencies": {
+    "@flexdash/node-red-flexdash": "^0.3.7"
+  },
+  "devDependencies": {
+  },
+  "author": "Someone",
+  "license": "MIT",
+  "keywords": [
+    "dashboard",
+    "flexdash",
+    "node-red"
+  ],
+  "bugs": {
+    "url": "https://github.com/tve/node-red-fd-network-diagram/issues"
+  },
+  "homepage": "https://github.com/tve/node-red-fd-network-diagram#README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tve/node-red-fd-network-diagram.git"
+  },
+  "node-red": {
+    "version": "^2.0.0",
+    "nodes": {
+      "network diagram": "network-diagram.js"
+    }
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

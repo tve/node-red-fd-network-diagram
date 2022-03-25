@@ -1,0 +1,22 @@
+{
+    "name": "netdiag",
+    "files": [
+        "dist"
+    ],
+    "module": "./dist/netdiag.es.js",
+    "exports": {
+        ".": {
+            "import": "./dist/netdiag.es.js"
+        }
+    },
+    "dependencies" : {
+        "vis-network": "^9.1.0"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^2.2.0",
+        "vite": "^2.8.0"
+    },
+    "scripts": {
+        "build": "vite build"
+    }
+}
