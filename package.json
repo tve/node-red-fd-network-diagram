@@ -25,7 +25,8 @@
   "node-red": {
     "version": "^2.0.0",
     "nodes": {
-      "network diagram": "network-diagram.js"
+      "network diagram": "network-diagram.js",
+      "network diagram 2": "network-diagram-2.js"
     }
   },
   "engines": {
