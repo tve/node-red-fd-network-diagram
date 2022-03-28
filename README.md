@@ -19,8 +19,8 @@ How-To using Docker
   npm install @flexdash/node-red-flexdash
   cd ..
 ```
-  (An alternative is to install it in the palette manager once Node-RED is up, but that's not
-  always the latest version.)
+    (An alternative is to install it in the palette manager once Node-RED is up, but that's not
+    always the latest version.)
 - create a shell script to start Node-RED in docker, adjust paths and ports as desired:
 ```
 #! /usr/bin/env bash
@@ -86,7 +86,7 @@ Node-RED is restarted. Here's how to do this:
 ```
 - point your web browser at the dev server and tell FlexDash to connect to Node-RED for data
   (ensure the ports are what vite printed and what you used in the docker config for Node-RED):
-  `http://localhost:3000/flexdash-src?sio=http://localhost:1990/flexdash/io
+  http://localhost:3000/flexdash-src?sio=http://localhost:1990/flexdash/io
 - you should see two widgets: "Welcome to FlexDash" and the small network-diagram; if you get a
   pop-up to change connections, then the "sio" URL is incorrect or Node-RED is not running
   (if you look into the Node-RED console log you'll see a line printed by FlexDash with
@@ -97,8 +97,10 @@ Non-docker (untested)
 ---------------------
 
 - git clone network-diagram: https://github.com/tve/node-red-fd-network-diagram
+- install vis-network (`cd node-red-fd-network-diagram/widgets; npm install --production`)
 - install it in Node-RED (in the Node-RED dir run `npm install ../path/to/node-red-fd-network-diagram`)
+- (this should also install node-red-flexdash because it's a dependency)
 - start Node-RED
 - create a new flow and import the example flow from the network diagram pkg
 - you will need to wait a while the first time while the dev server downloads flexdash and gets it running
-- open FlexDash and proceed as above
+- open FlexDash and proceed as with docker
