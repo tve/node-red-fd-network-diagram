@@ -67,8 +67,8 @@ Displays a computer network diagram... Send it some JSON and it does magic...`,
   // like plain variables elsewhere in the code. Vue figures out automatically what each of these
   // depend on and thus when they need to be recomputed.
   computed: {
-    nodeDataSet() { return new DataSet(Object.values(this.nodes)) },
-    edgeDataSet() { return new DataSet(Object.values(this.edges)) },
+    nodeDataSet() { return new DataSet(Object.values(this.nodes||[])) },
+    edgeDataSet() { return new DataSet(Object.values(this.edges||[])) },
     dataSet() { return { nodes: this.nodeDataSet, edges: this.edgeDataSet } },
   },
 
@@ -127,7 +127,7 @@ Displays a computer network diagram... Send it some JSON and it does magic...`,
 
     // update calls vis-network to update the canvas
     update(newDataSet, oldDataSet) {
-        console.log("Displaying network:", Object.keys(this.nodes), Object.keys(this.edges))
+        console.log("Displaying network:", JSON.stringify(this.nodes), Object.keys(this.edges))
         if (this.network) this.network.destroy()
         this.network = new Network(this.$refs.netdiag, newDataSet, this.options)
         // register the resize observer a tick later so everything is rendered

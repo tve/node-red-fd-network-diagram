@@ -51,7 +51,19 @@ module.exports = function (RED) {
 
           break
 
-        default:
+          case "remove_nodes":
+            if(!payload) {
+                throw "The payload should contain one or more node identifiers"
+            }
+            
+            if(!Array.isArray(payload)) payload = [payload]
+            for (const n of payload) {
+              fd.deleteWidgetParam(this, `nodes/${n}`)
+            }
+  
+            break
+  
+          default:
           throw "Unsupported command '" + topic + "' in topic"
       }
 
