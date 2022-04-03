@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Display a network diagram in Node-RED using the FlexDash dashboard.",
   "dependencies": {
-    "@flexdash/node-red-flexdash": "^0.3.7"
+    "@flexdash/node-red-flexdash": "^0.4.0"
   },
   "devDependencies": {
   },

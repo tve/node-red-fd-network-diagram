@@ -9,12 +9,13 @@
             "import": "./dist/netdiag.es.js"
         }
     },
-    "dependencies" : {
+    "dependencies": {
         "vis-network": "^9.1.0"
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^2.2.0",
-        "vite": "^2.8.0"
+        "vite": "^2.8.0",
+        "vite-plugin-externals": "^0.4.0"
     },
     "scripts": {
         "build": "vite build"
